@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
 </head>
 <body>
-  <select name="speaker" id="speakerMenu"></select>
+  <div style="padding: 6px;">
+    <div style="margin-bottom: 10px;">
+      <label for="hotkeyInput" style="display: inline-block; width: 180px;">再生/停止のショートカットキー</label>
+      <input id="hotkeyInput" type="text" placeholder="例：Alt+Shift+R" style="width: 120px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px;"/>
+    </div>
+
+    <div>
+      <label for="speakerMenu" style="display: inline-block; width: 60px;">話者：</label>
+      <select name="speaker" id="speakerMenu" style="width: 180px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px;"></select>
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
