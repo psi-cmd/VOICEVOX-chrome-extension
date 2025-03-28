@@ -148,3 +148,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   }
 });
+
+// set speakerId default to 1 if not set
+chrome.storage.local.get('speakerId', (result) => {
+  if (!result.speakerId) {
+    chrome.storage.local.set({ speakerId: 1 });
+  }
+});
+
