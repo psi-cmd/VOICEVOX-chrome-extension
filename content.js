@@ -46,6 +46,12 @@ const requestSpeechFromText = async (text, speakerId) => {
   }
 
   const speechAuxiliaryData = await fetchSpeechAuxiliaryData(text, speakerId)
+  
+  const speedResult = await chrome.storage.local.get('speed');
+  if (speedResult.speed) {
+    speechAuxiliaryData.speedScale = parseFloat(speedResult.speed);
+  }
+  
   const synthesizedAudioArrayBuffer = await fetchSynthesizedAudioArrayBuffer(speakerId, speechAuxiliaryData)
 
   if (!currentAudioContext) {

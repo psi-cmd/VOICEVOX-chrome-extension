@@ -6,6 +6,7 @@
 
 const hotkeyInput = document.getElementById("hotkeyInput");
 const speakerMenu = document.getElementById("speakerMenu");
+const speedInput = document.getElementById("speedInput");
 
 chrome.storage.local.get(['hotkey'], (res) => {
   if (res.hotkey) {
@@ -65,10 +66,21 @@ fetch("http://127.0.0.1:50021/speakers")
         speakerMenu.value = res.speakerId;
       }
     });
+    chrome.storage.local.get(['speed'], (res) => {
+      if (res.speed) {
+        speedInput.value = res.speed;
+      }
+    });
   })
 
 speakerMenu.addEventListener("change", ev => {
   chrome.storage.local.set({
     'speakerId': ev.target.value
+  })
+})
+
+speedInput.addEventListener("change", ev => {
+  chrome.storage.local.set({
+    'speed': ev.target.value
   })
 })
